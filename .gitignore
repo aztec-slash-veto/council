@@ -1,0 +1,59 @@
+# Ignore VS Code workspace file(s) and common local config
+# This prevents committing local editors, OS, and environment files.
+# Workspace
+council.code-workspace
+*.code-workspace
+
+# VS Code settings and extensions
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+.venv/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build / distribution
+dist/
+build/
+out/
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test / coverage
+.pytest_cache/
+coverage/
+coverage.xml
+.coverage
+
+# Misc
+*.swp
+*.swo
+*.lock
+
+# Keep this as the last fallback for local workspace files
+# (already listed above but kept for clarity)
+# *.code-workspace
