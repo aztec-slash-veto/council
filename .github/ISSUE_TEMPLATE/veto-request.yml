@@ -1,0 +1,44 @@
+name: "Veto request"
+description: "Request a veto of a slash, or a global pause"
+title: "[veto] <sequencer/committee> — round <round_number> — <category>"
+labels: ["veto-request"]
+body:
+  - type: dropdown
+    id: action
+    attributes:
+      label: Requested action
+      options: ["Veto specific slash","Pause all slashing"]
+    validations: { required: true }
+  - type: dropdown
+    id: category
+    attributes:
+      label: Offence category
+      options: ["inactivity","epoch-prune","data-withholding","invalid-sig","invalid-attestation","other"]
+    validations: { required: true }
+  - type: input
+    id: round_number
+    attributes:
+      label: Round Number
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why is this action needed?
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence & links (block explorer, logs, all client versions)
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Agreement
+      options:
+        - label: I understand that the slash veto council can only act within a 72 hour window
+          required: true
+        - label: I understand that all sequencers are entirely responsible for their own operations and the slash veto council will not counteract mistakes or bad luck
+          required: true
+        - label: I understand that the slash veto council's judgement is final and cannot be reversed
+          required: true
