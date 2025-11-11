@@ -8,4 +8,4 @@
 | Pol Lanski | | | |
 | Porter A | | | |
 | Sam zkGeorge | | [@georgethms1](https://x.com/georgethms1) | [ZKGeorge1](https://github.com/ZKGeorge1) |
-| Samuel Chong | | | |
+| Samuel Chong | Stakesaurus | [@stakesaurus](https://x.com/stakesaurus) | [samuelclk](https://github.com/samuelclk) |
