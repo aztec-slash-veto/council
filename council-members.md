@@ -1,6 +1,6 @@
 | Name | Entity | X Handle | GitHub |
 |------|--------|----------|--------|
-| A Clay | | | |
+| A Clay | Aragon | [@alexclayhills](https://x.com/alexclayhills) | [alexclayhills] |
 | sekuba | L2BEAT | [@sekubalias](https://x.com/sekubalias) | [sekuba](https://github.com/sekuba) |
 | Chris Wessels | GraphOps | [@undefinedza](https://x.com/undefinedza) | [chriswessels](https://github.com/chriswessels) |
 | Jim Cousins | Wavefive | [@jimwavefive](https://x.com/jimwavefive) | [cryptovestor21](https://github.com/cryptovestor21) |
