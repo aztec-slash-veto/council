@@ -3,7 +3,7 @@
 | A Clay | Aragon | [@alexclayhills](https://x.com/alexclayhills) | [alexclayhills](https://github.com/alexclayhills) |
 | sekuba | L2BEAT | [@sekubalias](https://x.com/sekubalias) | [sekuba](https://github.com/sekuba) |
 | Chris Wessels | GraphOps | [@undefinedza](https://x.com/undefinedza) | [chriswessels](https://github.com/chriswessels) |
-| Jim Cousins | Wavefive | [@jimwavefive](https://x.com/jimwavefive) | [cryptovestor21](https://github.com/cryptovestor21) |
+| Jim Cousins | Wavefive | [@jimwavefive](https://x.com/jimwavefive) | [jimwavefive](https://github.com/jimwavefive) |
 | Norbert Vadas | ZKCloud | [@norbertvadas](https://x.com/NorbertVadas) | [vadasnorbert](https://github.com/vadasnorbert) |
 | Pol Lanski | Dappnode | [@Pol_Lanski](https://x.com/Pol_Lanski)| [Pol-Lanski](https://github.com/pol-lanski)|
 | Porter Adams | Matter Labs | [@portport255](https://x.com/portport255) | [porteradams12](https://github.com/porteradams12) |
