@@ -9,7 +9,7 @@
 | Porter A | May26 |
 | Sam zkGeorge | Jun26 |
 | Samuel Chong | Jul26 |
-| Jim Cousins | Aug26 |
+| cyp | Aug26 |
 | A Clay | Sep26 |
 | sekuba | Oct26 |
 | Chris Wessels | Nov26 |
