@@ -34,3 +34,20 @@ The slashVeto Council is a fallback for unforeseen emergencies that were not acc
 
 The SlashVeto Council reserves the right to change the documented processes during the lifetime of the Council and in the interests of protecting the protocol.
 
+## Default Offense types
+Offenses and slashing amounts are configured in the aztec sequencer software. Here is an example config (the default config of v4.1.2). 
+
+| `offenseType` | Name | Description | Time Unit | Detection | Target |
+|---|---|---|---|---|---|
+| **0** | `UNKNOWN` | Default/unknown offense type | Epoch | — | — |
+| **1** | `DATA_WITHHOLDING` | The data required for proving an epoch was not made publicly available | Epoch | `EpochPruneWatcher` detects when an epoch cannot be proven due to missing data | Committee members of the affected epoch |
+| **2** | `VALID_EPOCH_PRUNED` | An epoch was not successfully proven within the proof submission window | Epoch | `EpochPruneWatcher` monitors epochs that expire without valid proofs | Committee members of the unpruned epoch |
+| **3** | `INACTIVITY` | A proposer failed to attest or propose blocks during their assigned slots | Epoch | `Sentinel` tracks validator performance and identifies validators who miss attestations beyond threshold | Individual inactive validator |
+| **4** | `BROADCASTED_INVALID_BLOCK_PROPOSAL` | A proposer broadcast an invalid block proposal over the p2p network | Slot | Validators detect invalid proposals during attestation validation | Proposer who broadcast the invalid block |
+| **5** | `PROPOSED_INSUFFICIENT_ATTESTATIONS` | A proposer submitted a block to L1 without sufficient committee attestations | Slot | `AttestationsBlockWatcher` checks L1 blocks for attestation count | Block proposer |
+| **6** | `PROPOSED_INCORRECT_ATTESTATIONS` | A proposer submitted a block to L1 with signatures from non-committee members | Slot | `AttestationsBlockWatcher` validates attestation signatures against committee membership | Block proposer |
+| **7** | `ATTESTED_DESCENDANT_OF_INVALID` | A committee member attested to a block built on top of an invalid ancestor | Slot | `AttestationsBlockWatcher` tracks invalid blocks and their descendants | Committee members who attested to the descendant block |
+| **8** | `DUPLICATE_PROPOSAL` | A proposer sent multiple block/checkpoint proposals for the same position with different content (equivocation) | Slot | P2P layer; `AttestationPool` flags when a second proposal arrives for the same position with a different archive | Proposer who broadcast the duplicate |
+| **9** | `DUPLICATE_ATTESTATION` | A validator signed attestations for different proposals at the same slot (equivocation) | Slot | P2P layer | Attesting validator | [2](#0-1) 
+
+
