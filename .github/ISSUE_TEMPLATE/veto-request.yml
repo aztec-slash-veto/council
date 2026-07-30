@@ -1,44 +1,97 @@
 name: "Veto request"
-description: "Request a veto of a slash, or a global pause"
-title: "[veto] <sequencer/committee> — round <round_number> — <category>"
+description: "Request a slashing-round payload veto or a temporary network-wide pause"
+title: "[slashing request] "
 labels: ["veto-request"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit immediately. A slashing payload can only be vetoed before execution.
   - type: dropdown
     id: action
     attributes:
       label: Requested action
-      options: ["Veto specific slash","Pause all slashing"]
-    validations: { required: true }
-  - type: dropdown
-    id: category
-    attributes:
-      label: Offence category
-      options: ["inactivity","epoch-prune","data-withholding","invalid-sig","invalid-attestation","other"]
-    validations: { required: true }
+      description: A round veto blocks its complete payload, including every validator slash it contains.
+      options:
+        - Veto a slashing round payload
+        - Temporarily disable all slashing
+    validations:
+      required: true
+
   - type: input
     id: round_number
     attributes:
-      label: Round Number
+      label: Slashing round
+      description: Enter the affected round number, or N/A for a network-wide pause.
+      placeholder: "1234"
+    validations:
+      required: true
+
+  - type: textarea
+    id: validators
+    attributes:
+      label: Affected validator addresses
+      description: Enter one address per line, or N/A for a network-wide pause.
+      placeholder: |
+        0x...
+        0x...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: offense
+    attributes:
+      label: Offense type
+      options:
+        - DATA_WITHHOLDING
+        - INACTIVITY
+        - BROADCASTED_INVALID_BLOCK_PROPOSAL
+        - BROADCASTED_INVALID_CHECKPOINT_PROPOSAL
+        - PROPOSED_INSUFFICIENT_ATTESTATIONS
+        - PROPOSED_INCORRECT_ATTESTATIONS
+        - PROPOSED_DESCENDANT_OF_CHECKPOINT_WITH_INVALID_ATTESTATIONS
+        - ATTESTED_TO_INVALID_CHECKPOINT_PROPOSAL
+        - DUPLICATE_PROPOSAL
+        - DUPLICATE_ATTESTATION
+        - Not offense-specific / Other
+    validations:
+      required: true
+
+  - type: input
+    id: node_version
+    attributes:
+      label: Aztec node version
+      description: Provide the exact version used by the affected operator(s), or N/A.
+      placeholder: "5.x.x"
+    validations:
+      required: true
+
   - type: textarea
     id: motivation
     attributes:
-      label: Why is this action needed?
+      label: Why is intervention needed?
+      description: Explain why the cause is systemic and outside normal operator responsibility.
+    validations:
+      required: true
+
   - type: textarea
     id: evidence
     attributes:
-      label: Evidence & links (block explorer, logs, all client versions)
-  - type: textarea
-    id: additional_context
-    attributes:
-      label: Additional context
+      label: Evidence and timeline
+      description: Link relevant slashing rounds, transactions, explorer pages, logs, incident reports, and client versions.
+    validations:
+      required: true
+
   - type: checkboxes
     id: terms
     attributes:
-      label: Agreement
+      label: Acknowledgements
       options:
-        - label: I understand that the slash veto council can only act within a 72 hour window
+        - label: I understand that a payload veto must be executed before the slashing round is executed, and I have submitted this request immediately.
           required: true
-        - label: I understand that all sequencers are entirely responsible for their own operations and the slash veto council will not counteract mistakes or bad luck
+        - label: I understand that a veto affects the complete round payload, not only the validators listed above.
           required: true
-        - label: I understand that the slash veto council's judgement is final and cannot be reversed
+        - label: I understand that operators remain responsible for routine operational failures, misconfiguration, and missed duties.
+          required: true
+        - label: I understand that intervention requires approval and execution by the 5-of-9 Council Safe.
           required: true
