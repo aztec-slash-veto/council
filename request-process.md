@@ -1,110 +1,50 @@
-# Council Request & Decision Procedure
+# Council request and decision process
 
-## Overview
-This procedure outlines how requests are submitted, reviewed, and decided upon by the council using GitHub Issues.
+## 1. Submit a request
 
-## 1. Request Submission
+Open the [slashing intervention form](https://github.com/aztec-slash-veto/council/issues/new?template=veto-request.yml) as soon as a potential incorrect slash is identified.
 
-- **Requester opens a GitHub issue** using the [request template](request-template.yml)
-- Issue must include:
-  - Clear title with `[REQUEST]` prefix
-  - What they're requesting
-  - Why it's needed
-- Issue is automatically tagged with `request` and `pending-review` labels
+Include:
 
-## 2. Initial Review
+- Whether you request a veto of one round's complete payload or a temporary network-wide pause.
+- The slashing round and affected validator addresses, if applicable.
+- The offense type, exact Aztec node version, timeline, logs, and on-chain evidence.
+- Why the event is systemic and outside the affected operators' reasonable control.
 
-- **Request Lead** (designated council member, rotates monthly) reviews new requests
-- Request Lead performs initial assessment:
-  - Verifies request is complete
-  - Adds relevant labels as needed
-  - Assigns all council members to the issue for visibility
-- Posts acknowledgment comment: *"Under council review"*
+Do not include secrets, private keys, or credentials.
 
-## 3. Council Assessment
+## 2. Initial review
 
-- All council members review the request independently
-- Members interact via issue comments:
-  - Ask clarifying questions
-  - Raise concerns or considerations
-  - Provide input and analysis
-- **Voting via GitHub reactions** on the original issue:
-  - 👍 = Approve
-  - 👎 = Deny
-  - 🤔 = Need more discussion
+The [on-duty request lead](request-lead-rota.md):
 
-## 4. Decision
+- Checks that the request is complete and that the payload has not been executed.
+- Acknowledges the request and asks for any missing evidence.
+- Alerts all Council members and coordinates time-sensitive review.
 
-### If consensus is clear:
-- Request Lead posts the decision directly in the issue
+Submitting a request does not pause execution or guarantee intervention.
 
-### If votes are split or unclear:
-- Add `council-meeting` label to issue
-- Discuss in next scheduled council meeting
-- Reach consensus or majority vote
-- Request Lead posts decision after meeting
+## 3. Assessment and decision
 
-## 5. Communication
+Council members assess:
 
-Request Lead posts decision comment on the issue:
+- Whether the reported offenses and affected validators match on-chain data.
+- Whether the cause is systemic, credible, and outside normal operator responsibility.
+- The impact of vetoing the whole round payload or pausing all slashing.
+- Whether a narrower protocol or operator response is available.
 
-### If Approved:
-- Add `approved` label
-- Remove `pending-review` label
-- Outline next steps and any conditions
+The request lead records an `APPROVED` or `DENIED` decision and a concise rationale in the issue. Any approved on-chain action requires at least five signatures from the 5-of-9 Council Safe.
 
-### If Denied:
-- Add `denied` label
-- Remove `pending-review` label
-- Provide brief, clear explanation
-- Suggest alternatives if applicable
-- Close the issue
+## 4. Execution
 
-### Decision comment should include:
-- Clear statement: "APPROVED" or "DENIED"
-- Reasoning summary
-- Next steps (if approved)
+For an approved request, the request lead:
 
-## 6. Execution (If Approved)
+- Coordinates the Safe transaction.
+- Posts the transaction link and status in the issue.
+- Confirms execution and closes the request.
 
-- **Request Lead** takes ownership of implementation
-- Provides progress updates via issue comments
-- Links any related PRs or work items
-- When complete:
-  - Posts final comment: *"Completed: [brief summary]"*
-  - Closes the issue
-  - Adds `completed` label
-
-## Labels Reference
-
-- `request` - All incoming requests
-- `pending-review` - Awaiting council decision
-- `approved` - Request approved by council
-- `denied` - Request denied by council
-- `completed` - Approved request has been executed
-- `needs-info` - Requires clarification from requester
-- `council-meeting` - Needs discussion in meeting
+A veto permanently blocks the complete payload for that slashing round. A global pause lasts three days unless the Council re-enables slashing earlier or extends the pause with another transaction.
 
 ## Roles
 
-- **Request Lead:** Rotates monthly among council members
-  - Monitors new requests
-  - Facilitates review process
-  - Posts official decisions
-  - Executes approved requests
-  - Provides status updates
-  - Closes completed requests
-
-- **Council Members:** All participate in every request
-  - Review requests independently
-  - Provide feedback and vote
-  - Attend meetings for disputed items
-
-## Best Practices
-
-- Check for new requests regularly
-- Respond to questions promptly
-- Keep discussion focused and professional
-- Document reasoning for decisions
-- Update request status promptly
-- Maintain a decision log for transparency
+- **Request lead:** Monitors new requests, coordinates review, posts decisions, and tracks execution.
+- **Council members:** Review evidence independently and, when approving an intervention, participate in the 5-of-9 Safe transaction.
